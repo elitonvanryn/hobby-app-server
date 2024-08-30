@@ -3,12 +3,14 @@ package com.vrsistemas.hobbyapp.server.services;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.vrsistemas.hobbyapp.server.domain.UserApp;
 import com.vrsistemas.hobbyapp.server.dto.UserAppNewDTO;
 import com.vrsistemas.hobbyapp.server.repositories.UserAppRepository;
+import com.vrsistemas.hobbyapp.server.security.UserSS;
 
 import jakarta.transaction.Transactional;
 
@@ -50,6 +52,15 @@ public class UserAppService {
 		userAppObj.setDateOfValidation(dateTimeService.getCurrentDateTime());
 		
 		return userAppObj;
+	}
+	
+	public static UserSS authenticated() {
+		try {
+			return (UserSS) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		}
+		catch (Exception e) {
+			return null;
+		}
 	}
 	
 	public UserApp fromDTO(UserAppNewDTO objDTO) {

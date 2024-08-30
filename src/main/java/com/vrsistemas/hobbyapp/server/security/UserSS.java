@@ -23,7 +23,7 @@ public class UserSS implements UserDetails {
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
-		}
+	}
 
 	public Integer getId() {
 		return id;
