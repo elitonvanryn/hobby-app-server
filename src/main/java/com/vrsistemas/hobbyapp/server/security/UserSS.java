@@ -1,11 +1,9 @@
 package com.vrsistemas.hobbyapp.server.security;
 
-
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-
 
 public class UserSS implements UserDetails {
 	private static final long serialVersionUID = 1L;
@@ -13,7 +11,6 @@ public class UserSS implements UserDetails {
 	private Integer id;
 	private String email;
 	private String senha;
-	private Collection<? extends GrantedAuthority> authorities;
 	
 	public UserSS() {
 	}
@@ -23,15 +20,11 @@ public class UserSS implements UserDetails {
 		this.id = id;
 		this.email = email;
 		this.senha = senha;
+		//this.authorities = perfis.stream().map(x -> new SimpleGrantedAuthority(x.getDescricao())).collect(Collectors.toList());
 	}
 
 	public Integer getId() {
 		return id;
-	}
-	
-	@Override
-	public Collection<? extends GrantedAuthority> getAuthorities() {
-		return authorities;
 	}
 
 	@Override
@@ -62,5 +55,11 @@ public class UserSS implements UserDetails {
 	@Override
 	public boolean isEnabled() {
 		return true;
+	}
+
+	@Override
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

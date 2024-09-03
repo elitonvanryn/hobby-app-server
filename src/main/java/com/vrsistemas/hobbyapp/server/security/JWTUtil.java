@@ -1,6 +1,5 @@
 package com.vrsistemas.hobbyapp.server.security;
 
-
 import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Value;

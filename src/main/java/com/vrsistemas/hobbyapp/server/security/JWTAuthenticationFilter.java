@@ -4,10 +4,11 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import javax.naming.AuthenticationException;
+
+import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -22,10 +23,10 @@ import jakarta.servlet.http.HttpServletResponse;
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
 	private AuthenticationManager authenticationManager;
-    
-    private JWTUtil jwtUtil;
-
-    public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
+	
+	private JWTUtil jwtUtil;
+	
+	public JWTAuthenticationFilter(AuthenticationManager authenticationManager, JWTUtil jwtUtil) {
     	setAuthenticationFailureHandler(new JWTAuthenticationFailureHandler());
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
@@ -80,4 +81,5 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                 + "\"path\": \"/login\"}";
         }
     }
+	
 }
