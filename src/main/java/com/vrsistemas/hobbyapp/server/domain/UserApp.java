@@ -3,6 +3,9 @@ package com.vrsistemas.hobbyapp.server.domain;
 import java.io.Serializable;
 import java.util.Date;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,6 +18,8 @@ public class UserApp implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@Column(unique = true)
 	private String email;
 	private String password;
 	private String token;
@@ -92,6 +97,10 @@ public class UserApp implements Serializable {
 
 	public void setDateOfValidation(Date dateOfValidation) {
 		this.dateOfValidation = dateOfValidation;
+	}
+	
+	public static BCryptPasswordEncoder bCryptPasswordEncoder() {
+		return new BCryptPasswordEncoder();
 	}
 	
 }
