@@ -6,4 +6,6 @@ public interface EmailService {
 
 	void sendEmail(SimpleMailMessage msg);
 	
+	void sendUserToken(String token);
+	
 }

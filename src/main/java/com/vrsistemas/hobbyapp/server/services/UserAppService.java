@@ -3,6 +3,7 @@ package com.vrsistemas.hobbyapp.server.services;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,13 @@ public class UserAppService {
 	private UserAppRepository userAppRepository;
 	
 	@Autowired
+	private AbstractEmailService abstractEmailService;
+	
+	@Autowired
 	private DateTimeService dateTimeService;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	@Autowired
 	private BCryptPasswordEncoder pe;
@@ -31,6 +38,8 @@ public class UserAppService {
 		userAppObj = generateToken(userAppObj);
 		
 		userAppObj = userAppRepository.save(userAppObj);
+		
+		emailService.sendUserToken(userAppObj.getToken());
 		
 		return userAppObj;
 	}

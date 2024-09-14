@@ -23,6 +23,7 @@ public class UserApp implements Serializable {
 	private String email;
 	private String password;
 	private String token;
+	private Boolean sendTokenMail = Boolean.FALSE;
 	private Date dateOfToken;
 	private Boolean validated = Boolean.FALSE;
 	private Date dateOfValidation;
@@ -31,13 +32,14 @@ public class UserApp implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserApp(Integer id, String email, String password, String token, Date dateOfToken, Boolean validated,
+	public UserApp(Integer id, String email, String password, String token, Boolean sendTokenMail, Date dateOfToken, Boolean validated,
 			Date dateOfValidation) {
 		super();
 		this.id = id;
 		this.email = email;
 		this.password = password;
 		this.token = token;
+		this.sendTokenMail = sendTokenMail;
 		this.dateOfToken = dateOfToken;
 		this.validated = validated;
 		this.dateOfValidation = dateOfValidation;
@@ -73,6 +75,18 @@ public class UserApp implements Serializable {
 
 	public void setToken(String token) {
 		this.token = token;
+	}
+
+	public Boolean getSendTokenMail() {
+		return sendTokenMail;
+	}
+
+	public void setSendTokenMail(Boolean sendTokenMail) {
+		this.sendTokenMail = sendTokenMail;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	public Date getDateOfToken() {
