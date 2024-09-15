@@ -1,10 +1,18 @@
 package com.vrsistemas.hobbyapp.server.services.thread;
 
-public class SendMailThread implements Runnable{
+import org.springframework.beans.factory.annotation.Autowired;
 
+import com.vrsistemas.hobbyapp.server.services.UserAppService;
+
+public class SendMailThread implements Runnable {
+
+	@Autowired
+	private UserAppService userAppService;
+	
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
+		
+		
 		
 	}
 	

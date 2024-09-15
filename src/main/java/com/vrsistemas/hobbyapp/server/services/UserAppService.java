@@ -1,5 +1,6 @@
 package com.vrsistemas.hobbyapp.server.services;
 
+import java.time.Duration;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class UserAppService {
 		
 		userAppObj = generateToken(userAppObj);
 		
-		userAppObj = userAppRepository.save(userAppObj);
+		userAppObj = userAppRepository.save(userAppObj);		
 		
 		emailService.sendUserToken(userAppObj.getToken());
 		
