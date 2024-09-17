@@ -9,6 +9,6 @@ import jakarta.persistence.Entity;
 public class LegalPerson extends Person {
 	private static final long serialVersionUID = 1L;
 
-	public String shopName;
+	public String stateRegistration;
 	
 }

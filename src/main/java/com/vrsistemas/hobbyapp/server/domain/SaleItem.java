@@ -18,7 +18,7 @@ public class SaleItem implements Serializable {
 	public Integer id;
 	public Integer price;
 	
-	public Integer quantityInStock;
+	public Integer stock;
 	
 	public Date publicationDate;
 	

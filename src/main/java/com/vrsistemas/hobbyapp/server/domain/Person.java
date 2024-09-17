@@ -2,6 +2,8 @@ package com.vrsistemas.hobbyapp.server.domain;
 
 import java.io.Serializable;
 
+import com.vrsistemas.hobbyapp.server.domain.enums.PersonType;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -17,6 +19,8 @@ public class Person implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Integer id;
 	protected String name;
+	
+	protected String personType;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	public UserApp userApp;
@@ -39,6 +43,14 @@ public class Person implements Serializable {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public PersonType getPersonType() {
+		return PersonType.toEnum(personType);
+	}
+
+	public void setPersonType(PersonType personType) {
+		this.personType = personType.getType();
 	}
 
 	public UserApp getUserApp() {
