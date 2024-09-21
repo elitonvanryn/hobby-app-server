@@ -16,8 +16,8 @@ public class Item implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
-	public String description;
+	private Integer id;
+	private String description;
 	
 	@OneToMany(mappedBy = "item")
 	public List<ItemImage> images = new ArrayList<>();

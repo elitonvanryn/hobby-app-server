@@ -5,6 +5,8 @@ import java.util.Date;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import com.vrsistemas.hobbyapp.server.domain.enums.UserProfile;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -28,12 +30,14 @@ public class UserApp implements Serializable {
 	private Boolean validated = Boolean.FALSE;
 	private Date dateOfValidation;
 	
+	private Integer userProfile;
+	
 	public UserApp() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public UserApp(Integer id, String email, String password, String token, Boolean sendTokenMail, Date dateOfToken, Boolean validated,
-			Date dateOfValidation) {
+	public UserApp(Integer id, String email, String password, String token, Boolean sendTokenMail, Date dateOfToken,
+			Boolean validated, Date dateOfValidation) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -111,6 +115,14 @@ public class UserApp implements Serializable {
 
 	public void setDateOfValidation(Date dateOfValidation) {
 		this.dateOfValidation = dateOfValidation;
+	}
+	
+	public UserProfile getUserProfile(Integer id) {
+		return UserProfile.toEnum(id);
+	}
+	
+	public void setUserProfile(UserProfile userProfile) {
+		this.userProfile = userProfile.getId();
 	}
 	
 	public static BCryptPasswordEncoder bCryptPasswordEncoder() {

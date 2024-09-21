@@ -1,17 +1,24 @@
 package com.vrsistemas.hobbyapp.server.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.vrsistemas.hobbyapp.server.domain.enums.PersonType;
+import com.vrsistemas.hobbyapp.server.domain.enums.UserProfile;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 public class Person implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,10 +27,13 @@ public class Person implements Serializable {
 	protected Integer id;
 	protected String name;
 	
+	@OneToMany(mappedBy="person", cascade=CascadeType.ALL)
+	protected List<Address> address = new ArrayList<>();
+	
 	protected String personType;
 	
 	@OneToOne(cascade = CascadeType.ALL)
-	public UserApp userApp;
+	protected UserApp userApp;
 	
 	public Person() {
 		// TODO Auto-generated constructor stub

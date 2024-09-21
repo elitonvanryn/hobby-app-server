@@ -15,15 +15,15 @@ public class ItemImage implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
-	public String urlImage;
+	private Integer id;
+	private String urlImage;
 	
-	public Date uploadDate;
+	private Date uploadDate;
 	
-	public Integer order;
+	private Integer order;
 	
 	@ManyToOne
-	public Item item;
+	private Item item;
 	
 	public ItemImage() {
 		// TODO Auto-generated constructor stub

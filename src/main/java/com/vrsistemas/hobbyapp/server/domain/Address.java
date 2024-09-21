@@ -17,18 +17,24 @@ public class Address implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer id;
-	public String address;
-	public String number;
-	public Boolean noNumber;
-	public String neighborhood;
-	public String complement;
-	public String postalCode;
+	private Integer id;
+	private String address;
+	private String number;
+	private Boolean noNumber;
+	private String neighborhood;
+	private String complement;
+	private String postalCode;
+	
+	private Boolean defaultAddress;
+	
+	@ManyToOne
+	@JoinColumn(name = "city_id")
+	private City city;
 	
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name="person_id")
-	public Person person;
+	private Person person;
 	
 	public Address() {
 		// TODO Auto-generated constructor stub
@@ -80,6 +86,38 @@ public class Address implements Serializable {
 
 	public void setComplement(String complement) {
 		this.complement = complement;
+	}
+
+	public Boolean getDefaultAddress() {
+		return defaultAddress;
+	}
+
+	public void setDefaultAddress(Boolean defaultAddress) {
+		this.defaultAddress = defaultAddress;
+	}
+
+	public String getPostalCode() {
+		return postalCode;
+	}
+
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
 	}
 	
 }

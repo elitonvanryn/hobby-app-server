@@ -8,6 +8,6 @@ import jakarta.persistence.Entity;
 @JsonTypeName("natural_person")
 public class NaturalPerson extends Person {
 
-	public String surname;
+	private String surname;
 	
 }

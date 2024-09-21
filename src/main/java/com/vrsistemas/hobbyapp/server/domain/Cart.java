@@ -1,21 +1,26 @@
 package com.vrsistemas.hobbyapp.server.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-public class Shipping implements Serializable {
+@Entity
+public class Cart implements Serializable {
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	private String address;
-	private String number;
-	private Boolean noNumber;
-	private String neighborhood;
-	private String complement;
-	private String postalCode;
+	private Date date;
+	
+	private List<ItemCart> items = new ArrayList<>();
+	
+	private UserApp userApp;
+
 }

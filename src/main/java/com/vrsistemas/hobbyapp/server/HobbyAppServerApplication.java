@@ -12,8 +12,6 @@ public class HobbyAppServerApplication {
 
 	public static void main(String[] args) throws IOException {
 		SpringApplication.run(HobbyAppServerApplication.class, args);
-		PaymentOrderService pos = new PaymentOrderService();
-		pos.createOrderAndPaymentWithBoleto();
 	}
 
 }
