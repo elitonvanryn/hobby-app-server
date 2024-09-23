@@ -28,6 +28,55 @@ public class ItemImage implements Serializable {
 	public ItemImage() {
 		// TODO Auto-generated constructor stub
 	}
+
+	public ItemImage(Integer id, String urlImage, Date uploadDate, Integer order, Item item) {
+		super();
+		this.id = id;
+		this.urlImage = urlImage;
+		this.uploadDate = uploadDate;
+		this.order = order;
+		this.item = item;
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getUrlImage() {
+		return urlImage;
+	}
+
+	public void setUrlImage(String urlImage) {
+		this.urlImage = urlImage;
+	}
+
+	public Date getUploadDate() {
+		return uploadDate;
+	}
+
+	public void setUploadDate(Date uploadDate) {
+		this.uploadDate = uploadDate;
+	}
+
+	public Integer getOrder() {
+		return order;
+	}
+
+	public void setOrder(Integer order) {
+		this.order = order;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
 	
 	
 }
