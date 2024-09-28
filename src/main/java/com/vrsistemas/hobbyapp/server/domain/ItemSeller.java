@@ -23,6 +23,8 @@ public class ItemSeller implements Serializable {
 	
 	private Date publicationDate;
 	
+	private String sku;
+	
 	@ManyToOne
 	@JoinColumn(name = "item_id")
 	private Item item;
@@ -31,4 +33,63 @@ public class ItemSeller implements Serializable {
 	@JoinColumn(name = "seller_id")
 	public Person seller;
 
+	public ItemSeller() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Integer getStock() {
+		return stock;
+	}
+
+	public void setStock(Integer stock) {
+		this.stock = stock;
+	}
+
+	public Date getPublicationDate() {
+		return publicationDate;
+	}
+
+	public void setPublicationDate(Date publicationDate) {
+		this.publicationDate = publicationDate;
+	}
+
+	public String getSku() {
+		return sku;
+	}
+
+	public void setSku(String sku) {
+		this.sku = sku;
+	}
+
+	public Item getItem() {
+		return item;
+	}
+
+	public void setItem(Item item) {
+		this.item = item;
+	}
+
+	public Person getSeller() {
+		return seller;
+	}
+
+	public void setSeller(Person seller) {
+		this.seller = seller;
+	}
 }

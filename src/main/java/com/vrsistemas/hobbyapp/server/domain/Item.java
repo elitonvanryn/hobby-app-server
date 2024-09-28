@@ -17,6 +17,8 @@ public class Item implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	private String name;
+	
 	private String description;
 	
 	@OneToMany(mappedBy = "item")
@@ -26,10 +28,10 @@ public class Item implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Item(Integer id, String description) {
+	public Item(Integer id, String name) {
 		super();
 		this.id = id;
-		this.description = description;
+		this.name = name;
 	}
 
 	public Integer getId() {
@@ -38,6 +40,14 @@ public class Item implements Serializable {
 
 	public void setId(Integer id) {
 		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getDescription() {

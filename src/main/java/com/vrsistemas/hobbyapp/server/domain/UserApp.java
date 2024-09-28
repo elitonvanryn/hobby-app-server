@@ -2,13 +2,19 @@ package com.vrsistemas.hobbyapp.server.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import com.vrsistemas.hobbyapp.server.domain.enums.UserProfile;
 
+import jakarta.persistence.CollectionTable;
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -30,7 +36,10 @@ public class UserApp implements Serializable {
 	private Boolean validated = Boolean.FALSE;
 	private Date dateOfValidation;
 	
-	private Integer userProfile;
+	@ElementCollection(fetch=FetchType.EAGER)
+	@CollectionTable(name = "PROFILE")
+	@Column(name = "profile_id")
+	private Set<Integer> profiles = new HashSet<>();
 	
 	public UserApp() {
 		// TODO Auto-generated constructor stub
@@ -47,6 +56,7 @@ public class UserApp implements Serializable {
 		this.dateOfToken = dateOfToken;
 		this.validated = validated;
 		this.dateOfValidation = dateOfValidation;
+		this.profiles.add(UserProfile.CLIENT.getId());
 	}
 
 	public Integer getId() {
@@ -117,12 +127,12 @@ public class UserApp implements Serializable {
 		this.dateOfValidation = dateOfValidation;
 	}
 	
-	public UserProfile getUserProfile(Integer id) {
-		return UserProfile.toEnum(id);
+	public Set<UserProfile> getPerfis() {
+		return profiles.stream().map(x -> UserProfile.toEnum(x)).collect(Collectors.toSet());
 	}
 	
-	public void setUserProfile(UserProfile userProfile) {
-		this.userProfile = userProfile.getId();
+	public void addPerfil(UserProfile profile) {
+		profiles.add(profile.getId());
 	}
 	
 	public static BCryptPasswordEncoder bCryptPasswordEncoder() {

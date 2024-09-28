@@ -1,6 +1,7 @@
 package com.vrsistemas.hobbyapp.server.services;
 
 import java.time.Duration;
+import java.util.Optional;
 import java.util.Random;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 import com.vrsistemas.hobbyapp.server.domain.UserApp;
 import com.vrsistemas.hobbyapp.server.dto.UserAppNewDTO;
 import com.vrsistemas.hobbyapp.server.repositories.UserAppRepository;
+import com.vrsistemas.hobbyapp.server.services.exceptions.ObjectNotFoundException;
 
 import jakarta.transaction.Transactional;
 
@@ -43,6 +45,16 @@ public class UserAppService {
 		emailService.sendUserToken(userAppObj.getToken());
 		
 		return userAppObj;
+	}
+	
+	public UserApp find(Integer id) {
+		Optional<UserApp> obj = userAppRepository.findById(id);
+		return obj.orElseThrow(() -> new ObjectNotFoundException(
+				"Objeto não encontrado! Id: " + id + ", Tipo: " + UserApp.class.getName()));
+	}
+	
+	public UserApp findByEmail(String email) {
+		return userAppRepository.findByEmail(email);
 	}
 	
 	public UserApp generateToken(UserApp userAppObj) {

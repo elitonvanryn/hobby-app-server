@@ -7,6 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
 @Entity
@@ -20,21 +21,22 @@ public class ItemImage implements Serializable {
 	
 	private Date uploadDate;
 	
-	private Integer order;
+	private Integer position;
 	
 	@ManyToOne
+	@JoinColumn(name = "item_id")
 	private Item item;
 	
 	public ItemImage() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ItemImage(Integer id, String urlImage, Date uploadDate, Integer order, Item item) {
+	public ItemImage(Integer id, String urlImage, Date uploadDate, Integer position, Item item) {
 		super();
 		this.id = id;
 		this.urlImage = urlImage;
 		this.uploadDate = uploadDate;
-		this.order = order;
+		this.position = position;
 		this.item = item;
 	}
 
@@ -62,12 +64,12 @@ public class ItemImage implements Serializable {
 		this.uploadDate = uploadDate;
 	}
 
-	public Integer getOrder() {
-		return order;
+	public Integer getPosition() {
+		return position;
 	}
 
-	public void setOrder(Integer order) {
-		this.order = order;
+	public void setPosition(Integer position) {
+		this.position = position;
 	}
 
 	public Item getItem() {

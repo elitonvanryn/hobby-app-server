@@ -39,6 +39,15 @@ public class Person implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
+	public Person(Integer id, String name, List<Address> address, String personType, UserApp userApp) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.address = address;
+		this.personType = personType;
+		this.userApp = userApp;
+	}
+
 	public Integer getId() {
 		return id;
 	}
